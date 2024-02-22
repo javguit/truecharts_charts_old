@@ -1,0 +1,56 @@
+remote: origin
+target-branch: master
+helm-extra-args: --timeout 250s
+chart-yaml-schema: .github/chart_schema.yaml
+chart-dirs:
+  - charts/incubator
+  - charts/stable
+  - charts/dependency
+  - charts/dev
+  - charts/enterprise
+  - charts/operators
+excluded-charts:
+  - charts/dependency/subchart
+  - charts/incubator/twingate-connector
+  - charts/incubator/docassemble
+  - charts/incubator/eco
+  - charts/incubator/midarr
+  - charts/incubator/orbital-sync
+  - charts/incubator/plex-meta-manager
+  - charts/incubator/telepush
+  - charts/library/common
+  - charts/stable/alertmanager-bot
+  - charts/stable/alertmanager-bot
+  - charts/stable/alertmanager-discord
+  - charts/stable/amcrest2mqtt
+  - charts/stable/arksurvivalevolved
+  - charts/stable/tauticord
+  - charts/stable/discordgsm
+  - charts/stable/facebox
+  - charts/stable/foundryvtt
+  - charts/stable/heimdall
+  - charts/stable/mc-router
+  - charts/stable/multus
+  - charts/stable/local-ai
+  - charts/stable/orbital-sync
+  - charts/stable/plex-meta-manager
+  - charts/stable/pod-gateway
+  - charts/stable/promcord
+  - charts/stable/rdesktop
+  - charts/stable/reg
+  - charts/stable/romm
+  - charts/stable/ser2sock
+  - charts/stable/storj-node
+  - charts/stable/tailscale
+  - charts/stable/webtop
+  - charts/stable/zalando-postgres-cluster
+  - charts/stable/zigbee2mqtt
+chart-repos:
+  - truecharts=https://charts.truecharts.org
+  - truecharts-library=https://library-charts.truecharts.org
+  - truecharts-deps=https://deps.truecharts.org
+  - jetstack=https://charts.jetstack.io
+  - vmwaretanzu=https://vmware-tanzu.github.io/helm-charts
+  - cnpg=https://cloudnative-pg.github.io/charts
+  - metallb=https://metallb.github.io/metallb
+  - prometheus-community=https://prometheus-community.github.io/helm-charts
