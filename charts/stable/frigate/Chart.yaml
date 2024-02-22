@@ -1,0 +1,31 @@
+apiVersion: v2
+appVersion: "0.12.1"
+dependencies:
+  - name: common
+    repository: https://library-charts.truecharts.org
+    version: 14.3.5
+deprecated: false
+description: NVR With Realtime Object Detection for IP Cameras
+home: https://truecharts.org/charts/stable/frigate
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/frigate.png
+keywords:
+  - encode
+  - nvr
+  - media
+  - frigate
+kubeVersion: ">=1.16.0-0"
+maintainers:
+  - email: info@truecharts.org
+    name: TrueCharts
+    url: https://truecharts.org
+name: frigate
+sources:
+  - https://github.com/truecharts/charts/tree/master/charts/stable/frigate
+  - https://github.com/blakeblackshear/frigate
+type: application
+version: 10.1.8
+annotations:
+  min_scale_version: "22.12.4"
+  max_scale_version: "23.10.1"
+  truecharts.org/category: nvr
+  truecharts.org/SCALE-support: "true"

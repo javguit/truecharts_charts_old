@@ -1,0 +1,25 @@
+image:
+  repository: ghcr.io/linuxserver/requestrr
+  pullPolicy: IfNotPresent
+  tag: 2.1.2@sha256:3136acf009b7c05b7f20c14529b4295252c19b02655e9f21a78e6cf165d83510
+service:
+  main:
+    ports:
+      main:
+        targetPort: 4545
+        port: 4545
+persistence:
+  config:
+    enabled: true
+    mountPath: "/config"
+  varrun:
+    enabled: true
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    runAsUser: 0
+    runAsGroup: 0

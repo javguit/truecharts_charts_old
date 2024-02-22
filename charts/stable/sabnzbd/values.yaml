@@ -1,0 +1,24 @@
+image:
+  repository: ghcr.io/onedr0p/sabnzbd
+  pullPolicy: IfNotPresent
+  tag: 4.1.0@sha256:f2f39716cf0c4bc40dc70f7f86037cdf43f06c05b8f33a360ab7bc5371250f8d
+service:
+  main:
+    ports:
+      main:
+        port: 10097
+        targetPort: 8080
+persistence:
+  config:
+    enabled: true
+    mountPath: "/config"
+portal:
+  open:
+    enabled: true
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            SABNZBD__HOST_WHITELIST_ENTRIES: ""

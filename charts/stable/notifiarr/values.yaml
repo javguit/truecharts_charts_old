@@ -1,0 +1,46 @@
+image:
+  repository: golift/notifiarr
+  pullPolicy: IfNotPresent
+  tag: 0.7.0@sha256:5080028cabe9169a84ebfeab0d38df1496a56965fa72a1072397e13dac5cf9bc
+notifiarr:
+  apikey: "test"
+  upstreams:
+    - 172.16.0.0/16
+  credentials:
+    username: ""
+    password: ""
+service:
+  main:
+    ports:
+      main:
+        port: 5454
+        protocol: http
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            TMPDIR: /tmpdir
+            DN_API_KEY: "{{ .Values.notifiarr.apikey }}"
+            DN_BIND_ADDR: '{{ printf "0.0.0.0:%v" .Values.service.main.ports.main.port }}'
+            DN_UPSTREAMS_0: '{{ join " " .Values.notifiarr.upstreams }}'
+            DN_UI_PASSWORD: '{{ printf "%v:%v" .Values.notifiarr.credentials.username .Values.notifiarr.credentials.password }}'
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+  machine-id:
+    enabled: true
+    type: hostPath
+    hostPath: /etc/machine-id
+    mountPath: /etc/machine-id
+    readOnly: true
+  tmpdir:
+    enabled: true
+    type: emptyDir
+    mountPath: /tmpdir
+    medium: Memory
+portal:
+  open:
+    enabled: true

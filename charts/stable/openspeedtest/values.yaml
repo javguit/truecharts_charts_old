@@ -1,0 +1,20 @@
+image:
+  repository: openspeedtest/latest
+  pullPolicy: IfNotPresent
+  tag: latest@sha256:948800e96e8369171407bba9607a05fe2a6c742fa0a038869ffcbb3ab2585c82
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        targetPort: 3000
+        port: 10256
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0

@@ -1,0 +1,43 @@
+image:
+  repository: jlongster/actual-server
+  pullPolicy: IfNotPresent
+  tag: 23.10.0@sha256:43f321864f98e7b9759507853e0e64908bb844305bbe72a3ffc893c42b962495
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsGroup: 0
+    runAsUser: 0
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              type: http
+              path: /
+            readiness:
+              type: http
+              path: /
+            startup:
+              type: http
+              path: /
+          env: {}
+service:
+  main:
+    ports:
+      main:
+        port: 10293
+        protocol: http
+        targetPort: 5006
+persistence:
+  server-files:
+    enabled: true
+    mountPath: /app/server-files
+  user-files:
+    enabled: true
+    mountPath: /app/user-files
+portal:
+  open:
+    enabled: true

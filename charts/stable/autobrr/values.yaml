@@ -1,0 +1,45 @@
+image:
+  repository: ghcr.io/autobrr/autobrr
+  pullPolicy: IfNotPresent
+  tag: v1.34.0@sha256:dda89d086868dc243349b2e50fa8dc3c866a6d531894b3a447ebdc2cdb4a736e
+service:
+  main:
+    ports:
+      main:
+        port: 7474
+        protocol: http
+        targetPort: 7474
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              enabled: true
+              type: exec
+              command:
+                - /bin/sh
+                - -c
+                - curl --fail localhost:7474/
+            readiness:
+              enabled: true
+              type: exec
+              command:
+                - /bin/sh
+                - -c
+                - curl --fail localhost:7474/
+            startup:
+              enabled: true
+              type: exec
+              command:
+                - /bin/sh
+                - -c
+                - curl --fail localhost:7474/
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+portal:
+  open:
+    enabled: true

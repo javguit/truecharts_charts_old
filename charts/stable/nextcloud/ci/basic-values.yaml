@@ -1,0 +1,7 @@
+nextcloud:
+  clamav:
+    enabled: true
+  collabora:
+    enabled: true
+  general:
+    accessIP: 127.0.0.1
